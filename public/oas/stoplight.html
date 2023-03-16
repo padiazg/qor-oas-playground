@@ -1,0 +1,74 @@
+<html>
+
+<head>
+    <title>Stoplight playground</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Elements in HTML</title>
+    <!-- Embed elements Elements via Web Component -->
+    <script src="https://unpkg.com/@stoplight/elements/web-components.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements/styles.min.css" />
+    <style>
+        .token-section {
+            padding: 5px;
+        }
+        
+        .token-section input {
+            border: 1px solid gray;
+            padding: 2px;
+            margin: 2px;
+        }
+        
+        .token-section input#token {
+            width: 75%;
+            height: 2rem;
+            padding: .5rem;
+        }
+        
+        .token-section input[type="button"] {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            border-radius: 5px;
+            height: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <elements-api apiDescriptionUrl="/portal-api/oas" router="hash" layout="sidebar"/> -->
+    <div id="token-section" class="token-section">
+        <form action="">
+            <label for="token">Token:</label>
+            <input type="text" name="token" id="token">
+            <input type="button" value="refresh" onclick="fetchOAS()">
+        </form>
+    </div>
+    <div id="docs-section">
+        <elements-api id="docs" router="hash" layout="sidebar" />
+    </div>
+    <script>
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        const fetchOAS = async() => {
+            const docs = document.getElementById('docs');
+            const userToken = document.getElementById('token').value;
+            const options = {
+                method: "GET",
+                mode: 'cors', // no-cors, *cors, same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Authorization': userToken
+                },
+            };
+
+            const text = await fetch('/api/oas', options)
+                .then(res => res.text())
+                .catch(err => console.error(err));
+            docs.apiDescriptionDocument = text;
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+    </script>
+</body>
+
+</html>
