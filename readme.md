@@ -3,34 +3,17 @@
 This project is for testing and developing the OAS document auto-generation from QOR resources declaration as it happens with the API
 
 ## Getting started
-First you need to clone Portal Admin fork and change to the PoC branch
-```bash
-cd ~/go/src/github.com/TykTechnologies/ 
-git clone git@github.com:TykTechnologies/portal-admin.git
-cd portal-admin
-git checkout oas-generator-poc
-```
-
-Next clone this repo
-> Use your own folder if you preferr, but make sure you update the replace to match the folders accordingly
+Clone this repo
 ```bash
 git clone git@github.com:padiazg/qor-oas-playground.git
 ```
-
-Update go.mod to so the replace can reach the `portal-admin` module
-```
-replace github.com/TykTechnologies/portal-admin => ../../TykTechnologies/portal-admin
-```
-
 Now you should be ready to run the playground
 
-## Play with it
-
-Run the project with
 ```bash
 go run main.go
 ```
 
+## Play with it
 The admin dashboard is at http://localhost:7100/admin
 
 The auto-generated OAS document is at http://localhost:7100/api/oas
