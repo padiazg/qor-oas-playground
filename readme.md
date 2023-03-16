@@ -3,10 +3,12 @@
 This project is for testing and developing the OAS document auto-generation from QOR resources declaration as it happens with the API
 
 ## Getting started
-First you need to clone Portal Admin fork
+First you need to clone Portal Admin fork and change to the PoC branch
 ```bash
 cd ~/go/src/github.com/TykTechnologies/ 
 git clone git@github.com:TykTechnologies/portal-admin.git
+cd portal-admin
+git checkout oas-generator-poc
 ```
 
 Next clone this repo
