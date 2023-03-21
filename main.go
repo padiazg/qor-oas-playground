@@ -7,17 +7,8 @@ import (
 	admin "github.com/TykTechnologies/portal-admin"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
-	accessrequest "github.com/padiazg/qor-oas-playground/app/access-request"
-	adminapp "github.com/padiazg/qor-oas-playground/app/admin"
 	"github.com/padiazg/qor-oas-playground/app/api"
-	"github.com/padiazg/qor-oas-playground/app/catalogue"
-	"github.com/padiazg/qor-oas-playground/app/client"
-	"github.com/padiazg/qor-oas-playground/app/credential"
-	"github.com/padiazg/qor-oas-playground/app/plan"
-	"github.com/padiazg/qor-oas-playground/app/product"
 	"github.com/padiazg/qor-oas-playground/app/static"
-	"github.com/padiazg/qor-oas-playground/app/team"
-	"github.com/padiazg/qor-oas-playground/app/user"
 	"github.com/padiazg/qor-oas-playground/config/application"
 	"github.com/padiazg/qor-oas-playground/config/db"
 	_ "github.com/padiazg/qor-oas-playground/config/db/migration"
@@ -57,17 +48,17 @@ func main() {
 	Router.Use(middleware.Recoverer)
 
 	Application.Use(api.New(&api.Config{}))
-	Application.Use(adminapp.New(&adminapp.Config{}))
-	Application.Use(user.New(&user.Config{}))
-	Application.Use(team.New(&team.Config{}))
+	// Application.Use(adminapp.New(&adminapp.Config{}))
+	// Application.Use(user.New(&user.Config{}))
+	// Application.Use(team.New(&team.Config{}))
 
-	Application.Use(catalogue.New(&catalogue.Config{}))
-	Application.Use(product.New(&product.Config{}))
-	Application.Use(plan.New(&plan.Config{}))
+	// Application.Use(catalogue.New(&catalogue.Config{}))
+	// Application.Use(product.New(&product.Config{}))
+	// Application.Use(plan.New(&plan.Config{}))
 
-	Application.Use(client.New(&client.Config{}))
-	Application.Use(accessrequest.New(&accessrequest.Config{}))
-	Application.Use(credential.New(&credential.Config{}))
+	// Application.Use(client.New(&client.Config{}))
+	// Application.Use(accessrequest.New(&accessrequest.Config{}))
+	// Application.Use(credential.New(&credential.Config{}))
 
 	Application.Use(static.New(&static.Config{
 		Prefixs: []string{"/oas"},

@@ -36,6 +36,6 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-// replace github.com/TykTechnologies/portal-admin => ../../TykTechnologies/portal-admin
+replace github.com/TykTechnologies/portal-admin => ../../TykTechnologies/portal-admin
 
-// replace github.com/go-oas/docs => ../../go-oas/docs
+replace github.com/go-oas/docs => ../../go-oas/docs

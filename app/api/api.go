@@ -8,6 +8,7 @@ import (
 	cm "github.com/padiazg/qor-oas-playground/models/client"
 	pm "github.com/padiazg/qor-oas-playground/models/product"
 	um "github.com/padiazg/qor-oas-playground/models/user"
+	"github.com/qor/qor"
 )
 
 // New new home app
@@ -48,7 +49,20 @@ func (app App) ConfigureApplication(application *application.Application) {
 	API.AddResource(&pm.Plan{})
 	API.AddResource(&pm.Catalogue{})
 
-	a := API.AddResource(&cm.Client{}, &admin.Config{Name: "app"})
+	ar := API.AddResource(&cm.AccessRequest{})
+
+	ar.Meta(&admin.Meta{
+		Name:   "Fake",
+		Type:   "string",
+		Valuer: func(r interface{}, ctx *qor.Context) (res interface{}) { return "fake" },
+	})
+
+	// ar.EditAttrs("Model", "Status")
+	// ar.ShowAttrs("Model", "Status", "Client", "Fake")
+
+	API.AddResource(&cm.Credential{})
+
+	a := API.AddResource(&cm.Client{}, &admin.Config{Name: "App"})
 	accessRequests, _ := a.AddSubResource("AccessRequests")
 	accessRequests.AddSubResource("Credentials")
 
