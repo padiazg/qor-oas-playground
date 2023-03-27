@@ -38,4 +38,5 @@ require (
 
 replace github.com/TykTechnologies/portal-admin => ../../TykTechnologies/portal-admin
 
-replace github.com/go-oas/docs => ../../go-oas/docs
+// replace github.com/go-oas/docs => ../../go-oas/docs
+replace github.com/go-oas/docs => ../../padiazg/docs
