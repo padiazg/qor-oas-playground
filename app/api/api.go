@@ -5,6 +5,7 @@ import (
 	"github.com/go-oas/docs"
 	"github.com/padiazg/qor-oas-playground/config/application"
 	"github.com/padiazg/qor-oas-playground/config/db"
+	pm "github.com/padiazg/qor-oas-playground/models/product"
 	um "github.com/padiazg/qor-oas-playground/models/user"
 )
 
@@ -41,10 +42,10 @@ func (app App) ConfigureApplication(application *application.Application) {
 	})
 
 	API.AddResource(&um.User{})
-	// API.AddResource(&um.Team{})
-	// API.AddResource(&pm.Product{})
-	// API.AddResource(&pm.Plan{})
-	// API.AddResource(&pm.Catalogue{})
+	API.AddResource(&um.Team{})
+	API.AddResource(&pm.Product{})
+	API.AddResource(&pm.Plan{})
+	API.AddResource(&pm.Catalogue{})
 
 	// ar := API.AddResource(&cm.AccessRequest{})
 
